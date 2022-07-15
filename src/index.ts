@@ -59,7 +59,7 @@ client.on('ready', () => {
             },
             {
                 name: "month",
-                description: "day of time to count to",
+                description: "month input",
                 type: 3,
                 required: true,
                 choices: [

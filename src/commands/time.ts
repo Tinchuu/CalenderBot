@@ -7,7 +7,7 @@ export class time extends clientAction {
         let dateTime = new Date()
 
         this.getInteract().reply({
-            content: "<t:" + Math.floor(dateTime.getTime() / 1000) + ">",
+            content: "<t:" + Math.floor(dateTime.getTime() / 1000) + ":F>",
         })
     }
 }

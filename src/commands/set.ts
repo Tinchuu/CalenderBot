@@ -14,7 +14,7 @@ export class set extends clientAction {
         
 
         interact.reply({
-            content: "<t:" + Math.floor(inputDate.getTime() / 1000) + ">",
+            content: "<t:" + Math.floor(inputDate.getTime() / 1000) + ":F>",
         })
     }
 }
