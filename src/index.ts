@@ -149,11 +149,9 @@ client.on('messageCreate', (message) => {
     }
 })
 
-function timeDif(input:Date) {
-    let dif = -1
-    let dateTime = new Date()
-
-
+function timeDif(input:number) {
+    let dateNow = Math.floor(Date.now() / 1000)
+    let dif = input - dateNow
     return dif
 }
 
