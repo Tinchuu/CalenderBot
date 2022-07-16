@@ -44,7 +44,7 @@ client.on('ready', () => {
         ],
     })
     commands?.create({
-        name: "time",
+        name: "current_time",
         description: "get current time",
     })
     commands?.create({

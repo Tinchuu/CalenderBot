@@ -2,7 +2,7 @@ import DiscordJS, {CommandInteraction } from 'discord.js'
 import { clientAction } from './clientAction'
 import { pain } from './commands/pain'
 import { set } from './commands/set'
-import { time } from './commands/time'
+import { currentTime } from './commands/currentTime'
 
 export class actionBuilder {
     private action: clientAction
@@ -17,8 +17,8 @@ export class actionBuilder {
                 this.action = new set(interaction)
                 break
 
-            case "time":
-                this.action = new time(interaction)
+            case "current_time":
+                this.action = new currentTime(interaction)
                 break
 
             default:
