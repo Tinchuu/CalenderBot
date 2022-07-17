@@ -1,4 +1,4 @@
-import DiscordJS, {CommandInteraction } from 'discord.js'
+import DiscordJS, { CommandInteraction } from 'discord.js'
 import { clientAction } from './clientAction'
 import { pain } from './commands/pain'
 import { set } from './commands/set'

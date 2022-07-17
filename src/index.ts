@@ -1,6 +1,7 @@
-import DiscordJS, { Intents, Interaction } from 'discord.js'
+import DiscordJS, { Intents } from 'discord.js'
 import dotenv from 'dotenv'
 import { actionBuilder } from './actionBuilder';
+import mongoose from 'mongoose'
 
 /*
     Need user to input due date, and event
@@ -26,7 +27,19 @@ const client = new DiscordJS.Client({
 });
 
 // Message to send when client is logged in
-client.on('ready', () => {
+client.on('ready', async () => {
+    await mongoose.connect(
+        process.env.MONGOOSE || '',
+        {
+            keepAlive: true
+        }
+    ).then(()=>{
+        console.log("connected")
+
+    }).catch((err)=>{
+        console.log(err)
+    })
+    
     console.log('ok')
 
     let commands = client.application?.commands
@@ -34,7 +47,8 @@ client.on('ready', () => {
     commands?.create({
         name: "pain",
         description: "inflicts pain on the cat",
-        options:[
+        options:
+        [
             {
                 name: "times",
                 description: "amount of times to inflict pain",
@@ -50,7 +64,8 @@ client.on('ready', () => {
     commands?.create({
         name: "set",
         description: "sets desired time",
-        options: [
+        options: 
+        [
             {
                 name: "day",
                 description: "day of time to count to",
@@ -65,55 +80,51 @@ client.on('ready', () => {
                 choices: [
                     {
                         "name": 'January',
-                        "value": 'January',
+                        "value": '0',
                     },
                     {
                         "name": 'February',
-                        "value": 'February'
+                        "value": '1'
                     },
                     {
                         "name": 'March',
-                        "value": 'March',
+                        "value": '2',
                     },
                     {
                         "name": 'April',
-                        "value": 'April',
+                        "value": '3',
                     },
                     {
                         "name": 'May', 
-                        "value": 'May', 
+                        "value": '4', 
                     },
                     {
                         "name": 'June',
-                        "value": 'June',
+                        "value": '5',
                     },
                     {
                         "name": 'July',
-                        "value": 'July',
-                    },
-                    {
-                        "name": 'March',
-                        "value": 'March',
+                        "value": '6',
                     },
                     {
                         "name": 'August',
-                        "value": 'August',
+                        "value": '7',
                     },
                     {
                         "name": 'September',
-                        "value": 'September',
+                        "value": '8',
                     },
                     {
                         "name": 'October',
-                        "value": 'October',
+                        "value": '9',
                     },
                     {
                         "name": 'November',
-                        "value": 'November',
+                        "value": '10',
                     },
                     {
                         "name": 'December',
-                        "value": 'December',
+                        "value": '11',
                     }
                 ]
             },
@@ -148,19 +159,6 @@ client.on('messageCreate', (message) => {
         })
     }
 })
-
-function timeDif(input:number) {
-    let dateNow = Math.floor(Date.now() / 1000)
-    let dif = input - dateNow
-    return dif
-}
-
-
-
-function cnvDate(input:string) {
-    
-    return ""
-}
 
 
 client.login(process.env.DISCORD_TOKEN)

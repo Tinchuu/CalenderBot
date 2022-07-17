@@ -6,8 +6,10 @@ export class pain extends clientAction {
         console.log("the cat has been attacked.")
         const interact = this.getInteract()
 
+
         interact.reply({
             content: "attacks Cat " + interact.options.getInteger("times"),
         })
+
     }
 }
