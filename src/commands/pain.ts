@@ -1,4 +1,4 @@
-import { clientAction } from "../clientAction";
+import { clientAction } from "./clientAction";
 
 
 export class pain extends clientAction {

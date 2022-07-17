@@ -1,5 +1,5 @@
 import DiscordJS, { CommandInteraction } from 'discord.js'
-import { clientAction } from './clientAction'
+import { clientAction } from './commands/clientAction'
 import { pain } from './commands/pain'
 import { set } from './commands/set'
 import { currentTime } from './commands/currentTime'

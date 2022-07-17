@@ -67,13 +67,13 @@ client.on('ready', async () => {
         options: 
         [
             {
-                name: "day",
+                name: "end_day",
                 description: "day of time to count to",
                 type: 4,
                 required: true,
             },
             {
-                name: "month",
+                name: "end_month",
                 description: "month input",
                 type: 3,
                 required: true,
@@ -129,19 +129,111 @@ client.on('ready', async () => {
                 ]
             },
             {
-                name: "year",
+                name: "title",
+                description: "hour of day",
+                type: 3,
+                required: true,
+            },
+            {
+                name: "start_day",
+                description: "day of time to count to",
+                type: 4,
+                required: false,
+            },
+            {
+                name: "start_month",
+                description: "month input",
+                type: 3,
+                required: false,
+                choices: [
+                    {
+                        "name": 'January',
+                        "value": '0',
+                    },
+                    {
+                        "name": 'February',
+                        "value": '1'
+                    },
+                    {
+                        "name": 'March',
+                        "value": '2',
+                    },
+                    {
+                        "name": 'April',
+                        "value": '3',
+                    },
+                    {
+                        "name": 'May', 
+                        "value": '4', 
+                    },
+                    {
+                        "name": 'June',
+                        "value": '5',
+                    },
+                    {
+                        "name": 'July',
+                        "value": '6',
+                    },
+                    {
+                        "name": 'August',
+                        "value": '7',
+                    },
+                    {
+                        "name": 'September',
+                        "value": '8',
+                    },
+                    {
+                        "name": 'October',
+                        "value": '9',
+                    },
+                    {
+                        "name": 'November',
+                        "value": '10',
+                    },
+                    {
+                        "name": 'December',
+                        "value": '11',
+                    }
+                ]
+            },
+            {
+                name: "end_year",
                 description: "year of the the",
                 type: 4,
                 required: false,
             },
             {
-                name: "hour",
+                name: "end_hour",
                 description: "hour of day",
                 type: 4,
                 required: false,
             },
             {
-                name: "minute",
+                name: "end_minute",
+                description: "edkjfshef",
+                type: 4,
+                required: false,
+            },
+            {
+                name: "description",
+                description: "year of the the",
+                type: 3,
+                required: false,
+            },
+            {
+                name: "start_year",
+                description: "year of the the",
+                type: 4,
+                required: false,
+            },
+            {
+                name: "start_hour",
+                description: "hour of day",
+                type: 4,
+                required: false,
+            },
+            {
+                name: "start_minute",
                 description: "edkjfshef",
                 type: 4,
                 required: false,
