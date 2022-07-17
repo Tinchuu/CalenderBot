@@ -130,9 +130,21 @@ client.on('ready', async () => {
             },
             {
                 name: "year",
-                description: "day of time to count to",
+                description: "year of the the",
                 type: 4,
-                required: true,
+                required: false,
+            },
+            {
+                name: "hour",
+                description: "hour of day",
+                type: 4,
+                required: false,
+            },
+            {
+                name: "minute",
+                description: "edkjfshef",
+                type: 4,
+                required: false,
             },
         ]
     })

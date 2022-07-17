@@ -14,7 +14,7 @@ export abstract class clientAction {
     public action() {
     }
 
-    public createEmbed(title:string, colour:string, start:number, end:number) {
+    public createEmbed(title:string, colour:string, start:number, end:number, description:string) {
         const embed = new MessageEmbed()
         .setColor(`#${colour}`)
         .setTitle(title)
@@ -29,22 +29,20 @@ export abstract class clientAction {
             },
             {
                 name: "Time Elapsed",
-                value: this.formatUnix(this.timeDif(end))
+                value: this.formatUnix(this.timeDif(start, end))
             },
             {
                 name: "Weight",
                 value: "Worth: "
             }
         )
-        .setDescription("This thing is due on this day and i am speaking lots of text this is very cool and coolhdsafiuwaernguaweyfgawekfhdafawgbefuawegfkedjfh")
+        .setDescription(description)
 
         return embed
     }
 
-    public timeDif(input:number) {
-        let dateNow = Math.floor(Date.now() / 1000)
-        let dif = input - dateNow
-        return dif
+    public timeDif(start:number, end:number) {
+        return end - start
     }
     
     public formatUnix(input:number) {
