@@ -1,29 +1,7 @@
 import { MessageEmbed } from "discord.js"
 
-export class newEmbed {
+export class embedBuilder {
     private embed = new MessageEmbed()
-
-    constructor(title:string, colour:string, start:number, end:number, description:string) {
-        this.embed
-        .setColor(`#${colour}`)
-        .setTitle(title)
-        .addFields(
-            {
-                name: "Start",
-                value: "Start Date: <t:" + start + ":F>"
-            },
-            {
-                name: "Due",
-                value: "Due Date: <t:" + end + ":F>"
-            },
-            {
-                name: "Time Left",
-                value: this.formatUnix(this.timeDif(end))
-            }
-        )
-        .setDescription(description)
-    }
-
 
     public getEmbed() {
         return this.embed

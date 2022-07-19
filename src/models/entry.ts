@@ -1,17 +1,12 @@
-import { MessageEmbed } from "discord.js";
 import mongoose, { Schema } from "mongoose";
 
-const entSchema = new Schema({
-    content: {
-        type: MessageEmbed,
-        required: true,
-    },
-    topic: {
-        type: String,
-        required: true,
-    },
-
+const Deadline = new Schema({
+    title: String,
+    start: Number,
+    end: Number,
+    description: String,
+    topic: String,
 }, {timestamps: true})
 
-const Ent = mongoose.model("CalBotData", entSchema)
-module.exports = Ent
+
+export default Deadline

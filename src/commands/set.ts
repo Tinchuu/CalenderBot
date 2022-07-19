@@ -1,6 +1,9 @@
-import { Formatters } from "discord.js";
-import { clientAction } from "./clientAction";
-import { newEmbed } from "../models/embedBuilder";
+import { clientAction } from "./clientAction"
+import { courseModel } from "../models/courseModel"
+import mongoose, { mongo } from "mongoose"
+import { singularEmbed } from "../models/singularEmbed"
+
+
 
 export class set extends clientAction {
     public action() {
@@ -22,6 +25,7 @@ export class set extends clientAction {
         const eyear = extract.getInteger("end_year")
         const ehour = extract.getInteger("end_hour")
         const eminute = extract.getInteger("end_minute")
+        
 
         if (eday) 
             endDate.setDate(eday)
@@ -54,14 +58,51 @@ export class set extends clientAction {
             startDate.setMinutes(sminute)
 
 
-        const now = Math.floor(endDate.getTime() / 1000)
-        const unix = Math.floor(startDate.getTime() / 1000)
 
-        const hah = new newEmbed("OK", "FF0000", now, unix, "yes")
+        const end = Math.floor(endDate.getTime() / 1000)
+        const start = Math.floor(startDate.getTime() / 1000)
+
+        const hah = new singularEmbed(String(extract.getString("title")), "FF0000", start, end, String(extract.getString("description")))
+
+        this.create(String(extract.getString("title")), Number(start), Number(end), String(extract.getString("description")), String(extract.getString("topic")))
+        
+
 
         interact.reply({
-            content: "<t:" + unix + ":F>,",
+            content: "<t:" + start + ":F>,",
             embeds: [hah.getEmbed()],
+        })
+    }
+
+    public async create(title:string, start:Number, end:Number, description:string, topic:string) {
+        await mongoose.connect(
+            process.env.MONGOOSE || '',
+            {
+            }
+        ).then(()=>{
+            console.log("connected")
+    
+        }).catch((err)=>{
+            console.log(err)
+        })
+
+        const course = new courseModel
+
+        const entry =  await course.exporting(topic).create({
+            title: title,
+            start: start,
+            end: end,
+            description: description,
+            topic: topic,
+        })
+
+        const saveEntry = await entry.save()
+
+        mongoose.connection.close().then(()=>{
+            console.log("closed")
+    
+        }).catch((err)=>{
+            console.log(err)
         })
     }
 }

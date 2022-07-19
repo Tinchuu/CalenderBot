@@ -28,17 +28,12 @@ const client = new DiscordJS.Client({
 
 // Message to send when client is logged in
 client.on('ready', async () => {
-    await mongoose.connect(
-        process.env.MONGOOSE || '',
-        {
-            keepAlive: true
-        }
-    ).then(()=>{
-        console.log("connected")
+    let days:number[] = []
+    for (let i = 1; i < 32; i++) {
+        days[i] = i
+    }
 
-    }).catch((err)=>{
-        console.log(err)
-    })
+    
     
     console.log('ok')
 
@@ -46,13 +41,13 @@ client.on('ready', async () => {
 
     commands?.create({
         name: "pain",
-        description: "inflicts pain on the cat",
+        description: "inflicts pain",
         options:
         [
             {
-                name: "times",
-                description: "amount of times to inflict pain",
-                type: 4,
+                name: "course",
+                description: "pain",
+                type: 3,
                 required: false,
             }
         ],
@@ -68,13 +63,13 @@ client.on('ready', async () => {
         [
             {
                 name: "end_day",
-                description: "day of time to count to",
+                description: "day of the end of the deadline",
                 type: 4,
                 required: true,
             },
             {
                 name: "end_month",
-                description: "month input",
+                description: "month of the end of the deadline",
                 type: 3,
                 required: true,
                 choices: [
@@ -130,19 +125,25 @@ client.on('ready', async () => {
             },
             {
                 name: "title",
-                description: "hour of day",
+                description: "title of the task that is due",
+                type: 3,
+                required: true,
+            },
+            {
+                name: "topic",
+                description: "topic of the course - please enter in the proper course ID, e.g. 'ENGGEN 204'",
                 type: 3,
                 required: true,
             },
             {
                 name: "start_day",
-                description: "day of time to count to",
+                description: "Day of the start of task",
                 type: 4,
                 required: false,
             },
             {
                 name: "start_month",
-                description: "month input",
+                description: "Month of the start of task",
                 type: 3,
                 required: false,
                 choices: [
@@ -198,43 +199,43 @@ client.on('ready', async () => {
             },
             {
                 name: "end_year",
-                description: "year of the the",
+                description: "End year of due date",
                 type: 4,
                 required: false,
             },
             {
                 name: "end_hour",
-                description: "hour of day",
+                description: "End hour of due date",
                 type: 4,
                 required: false,
             },
             {
                 name: "end_minute",
-                description: "edkjfshef",
+                description: "End minute of due date",
                 type: 4,
                 required: false,
             },
             {
                 name: "description",
-                description: "year of the the",
+                description: "Description of the task due",
                 type: 3,
                 required: false,
             },
             {
                 name: "start_year",
-                description: "year of the the",
+                description: "Year start of the task",
                 type: 4,
                 required: false,
             },
             {
                 name: "start_hour",
-                description: "hour of day",
+                description: "Hour start of the task",
                 type: 4,
                 required: false,
             },
             {
                 name: "start_minute",
-                description: "edkjfshef",
+                description: "Minutes start of the task",
                 type: 4,
                 required: false,
             },
