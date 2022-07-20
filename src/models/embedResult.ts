@@ -10,7 +10,13 @@ export class embedResult extends embedBuilder {
         .setDescription(description)
     }
 
-    public addField() {
-        this.getEmbed()['fields'].push()
+    public addField(title:string, remainingTime:number) {
+        this.getEmbed()['fields'].push(
+            {
+                name: title,
+                value: "<t:" + remainingTime + ":F>",
+                inline: false
+            },
+        )
     }
 }
