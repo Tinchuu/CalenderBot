@@ -40,6 +40,19 @@ client.on('ready', async () => {
     let commands = client.application?.commands
 
     commands?.create({
+        name: "remind",
+        description: "reminds",
+        options:
+        [
+            {
+                name: "course",
+                description: "pain",
+                type: 3,
+                required: false,
+            }
+        ],
+    })
+    commands?.create({
         name: "pain",
         description: "inflicts pain",
         options:
